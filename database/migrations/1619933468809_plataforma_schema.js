@@ -7,7 +7,7 @@ class PlataformaSchema extends Schema {
   up () {
     this.create('plataformas', (table) => {
       table.increments()
-      table.string('name', 100).notNullable()
+      table.string('nome', 100).notNullable()
       table.timestamps()
     })
   }

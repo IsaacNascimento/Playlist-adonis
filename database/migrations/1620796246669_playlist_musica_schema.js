@@ -3,19 +3,19 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class PlaylistEstiloSchema extends Schema {
+class PlaylistMusicaSchema extends Schema {
   up () {
-    this.create('playlist_estilos', (table) => {
+    this.create('playlist_musicas', (table) => {
       table.increments()
+      table.integer('musica_id').references('id').inTable('musicas').unsigned().notNullable()
       table.integer('playlist_id').references('id').inTable('playlists').unsigned().notNullable()
-      table.integer('estilo_id').references('id').inTable('estilos').unsigned().notNullable()
       table.timestamps()
     })
   }
 
   down () {
-    this.drop('playlist_estilos')
+    this.drop('playlist_musicas')
   }
 }
 
-module.exports = PlaylistEstiloSchema
+module.exports = PlaylistMusicaSchema

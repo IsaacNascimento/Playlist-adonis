@@ -4,14 +4,14 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const Estilo = use("App/Models/Estilo")
+const Autor = use("App/Models/Autor")
 /**
- * Resourceful controller for interacting with Estilos
+ * Resourceful controller for interacting with Autors
  */
-class EstiloController {
+class AutorController {
   /**
-   * Show a list of all Estilos.
-   * GET Estilos
+   * Show a list of all Autors.
+   * GET Autors
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -23,12 +23,12 @@ class EstiloController {
      
     perPage = perPage ? perPage : 5
 
-    return Estilo.query().paginate(page, perPage);
+    return Autor.query().paginate(page, perPage);
   }
 
   /**
-   * Render a form to be used for creating a new Estilo.
-   * GET Estilos/create
+   * Render a form to be used for creating a new Autor.
+   * GET Autors/create
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -39,26 +39,26 @@ class EstiloController {
   }
 
   /**
-   * Create/save a new Estilo.
-   * POST Estilos
+   * Create/save a new Autor.
+   * POST Autors
    *
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
-    //const Estilo = request.only(['nome', 'cpf', 'data_nascimento', 'matricula', 'email', 'telefone', 'cep', 'logradouro', 'complemento', 'bairro', 'uf', 'municipio'])
-    //return await Estilo.create(Estilo)
+    //const Autor = request.only(['nome', 'cpf', 'data_nascimento', 'matricula', 'email', 'telefone', 'cep', 'logradouro', 'complemento', 'bairro', 'uf', 'municipio'])
+    //return await Autor.create(Autor)
 
-    const campos = Estilo.getCamposCadastro() //Forma mais elegante
-    const estilo = request.only(campos)
-    return await Estilo.create(estilo)
+    const campos = Autor.getCamposCadastro() //Forma mais elegante
+    const autor = request.only(campos)
+    return await Autor.create(autor)
   }
 
 
   /**
-   * Display a single Estilo.
-   * GET Estilos/:id
+   * Display a single Autor.
+   * GET Autors/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -66,15 +66,15 @@ class EstiloController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    return await Estilo.query()                 // Mesma coisa do FindOrFail, porém usando o "with".
-                       .with('musicas')
-                       .where(' id', params.id)
-                       .first();
+    return await Autor.query()                 // Mesma coisa do FindOrFail, porém usando o "with".
+                      .with('musicas')
+                      .where(' id', params.id)
+                      .first();
   }
 
   /**
-   * Render a form to update an existing Estilo.
-   * GET Estilos/:id/edit
+   * Render a form to update an existing Autor.
+   * GET Autors/:id/edit
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -85,8 +85,8 @@ class EstiloController {
   }
 
   /**
-   * Update Estilo details.
-   * PUT or PATCH Estilos/:id
+   * Update Autor details.
+   * PUT or PATCH Autors/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -94,30 +94,30 @@ class EstiloController {
    */
   async update ({ params, request, response }) {
 
-    const estilo = await Estilo.findOrFail(params.id); //Forma mais elegante
+    const autor = await Autor.findOrFail(params.id); //Forma mais elegante
 
-    const campos = Estilo.getCamposCadastro() // Exportar da Model. Assim vc não precisa modificar de um em um.
+    const campos = Autor.getCamposCadastro() // Exportar da Model. Assim vc não precisa modificar de um em um.
     const dados = request.only(campos)
 
-    estilo.merge(dados);
-    await estilo.save();
+    autor.merge(dados);
+    await autor.save();
 
-    return estilo;
+    return autor;
   }
 
   /**
-   * Delete a Estilo with id.
-   * DELETE Estilos/:id
+   * Delete a Autor with id.
+   * DELETE Autors/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
-    const estilo = await Estilo.findOrFail(params.id);
+    const autor = await Autor.findOrFail(params.id);
 
-    return await estilo.delete()
+    return await autor.delete()
   }
 }
 
-module.exports = EstiloController
+module.exports = AutorController

@@ -7,7 +7,8 @@ class EstiloSchema extends Schema {
   up () {
     this.create('estilos', (table) => {
       table.increments()
-      table.string('name', 100).notNullable()
+      table.string('nome', 100).notNullable()
+      table.string('tipo', 100)
       table.timestamps()
     })
   }

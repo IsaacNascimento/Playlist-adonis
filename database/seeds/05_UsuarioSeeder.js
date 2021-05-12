@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| EstiloSeeder
+| UsuarioSeeder
 |--------------------------------------------------------------------------
 |
 | Make use of the Factory instance to seed database with dummy data or
@@ -13,21 +13,17 @@
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
 
-const Estilo = use('App/Models/Estilo')
+const Usuario = use('App/Models/Usuario')
 
-class EstiloSeeder {
+class UsuarioSeeder {
   async run () {
-    await Estilo.createMany([
-      {id: 1, name: 'Funk'},
-      {id: 2, name: 'Sertanejo'},
-      {id: 3, name: 'Eletrônica'},
-      {id: 4, name: 'Rock'},
-      {id: 5, name: 'Rap'},
-      {id: 6, name: 'Trap'},
-      {id: 7, name: 'Raggae'},
-      {id: 8, name: 'Pagode'},
+    await Usuario.createMany([
+      {id: 1 ,  nome: 'João'},
+      {id: 2 ,  nome: 'Francisco'}, 
+      {id: 3 ,  nome: 'Maria'},
+      {id: 4 ,  nome: 'Joana'} 
     ])
   }
 }
 
-module.exports = EstiloSeeder
+module.exports = UsuarioSeeder

@@ -19,3 +19,23 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
+
+Route.resource('/usuarios', 'UsuarioController').apiOnly();
+
+Route.resource('/autores', 'AutorController').apiOnly();
+
+Route.resource('/estilos', 'EstiloController').apiOnly();
+
+Route.resource('/musicas', 'MusicaController').apiOnly();
+
+Route.resource('/plataformas', 'PlataformaController').apiOnly();
+
+Route.resource('/playlists', 'PlaylistController').apiOnly();
+
+Route.resource('/playlistsmusicas', 'PlaylistMusicaController').apiOnly();
+
+Route.resource('/autormusicas', 'AutorMusicaController').apiOnly();
+
+Route.resource('/despertadores', 'DespertadorController').apiOnly();
+
+Route.resource('/datas', 'DataController').apiOnly();

@@ -7,8 +7,9 @@ class DespertadorSchema extends Schema {
   up () {
     this.create('despertadores', (table) => {
       table.increments()
-      table.integer('semana_id').references('id').inTable('semanas').unsigned().notNullable()
-      table.integer('horario_id').references('id').inTable('horarios').unsigned().notNullable()
+      table.string('titulo', 100).notNullable()
+      table.integer('usuario_id').references('id').inTable('usuarios').unsigned().notNullable()
+      table.integer('playlist_id').references('id').inTable('playlists').unsigned()
       table.timestamps()
     })
   }

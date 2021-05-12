@@ -4,14 +4,14 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const Estilo = use("App/Models/Estilo")
+const Musica = use("App/Models/Musica")
 /**
- * Resourceful controller for interacting with Estilos
+ * Resourceful controller for interacting with Musicas
  */
-class EstiloController {
+class MusicaController {
   /**
-   * Show a list of all Estilos.
-   * GET Estilos
+   * Show a list of all Musicas.
+   * GET Musicas
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -23,12 +23,12 @@ class EstiloController {
      
     perPage = perPage ? perPage : 5
 
-    return Estilo.query().paginate(page, perPage);
+    return Musica.query().paginate(page, perPage);
   }
 
   /**
-   * Render a form to be used for creating a new Estilo.
-   * GET Estilos/create
+   * Render a form to be used for creating a new Musica.
+   * GET Musicas/create
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -39,26 +39,26 @@ class EstiloController {
   }
 
   /**
-   * Create/save a new Estilo.
-   * POST Estilos
+   * Create/save a new Musica.
+   * POST Musicas
    *
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
-    //const Estilo = request.only(['nome', 'cpf', 'data_nascimento', 'matricula', 'email', 'telefone', 'cep', 'logradouro', 'complemento', 'bairro', 'uf', 'municipio'])
-    //return await Estilo.create(Estilo)
+    //const Musica = request.only(['nome', 'cpf', 'data_nascimento', 'matricula', 'email', 'telefone', 'cep', 'logradouro', 'complemento', 'bairro', 'uf', 'municipio'])
+    //return await Musica.create(Musica)
 
-    const campos = Estilo.getCamposCadastro() //Forma mais elegante
-    const estilo = request.only(campos)
-    return await Estilo.create(estilo)
+    const campos = Musica.getCamposCadastro() //Forma mais elegante
+    const musica = request.only(campos)
+    return await Musica.create(musica)
   }
 
 
   /**
-   * Display a single Estilo.
-   * GET Estilos/:id
+   * Display a single Musica.
+   * GET Musicas/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -66,15 +66,17 @@ class EstiloController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    return await Estilo.query()                 // Mesma coisa do FindOrFail, porém usando o "with".
-                       .with('musicas')
+    return await Musica.query()                 // Mesma coisa do FindOrFail, porém usando o "with".
+                       .with('estilo')
+                       .with('autores')
+                       .with('playlist')
                        .where(' id', params.id)
                        .first();
   }
 
   /**
-   * Render a form to update an existing Estilo.
-   * GET Estilos/:id/edit
+   * Render a form to update an existing Musica.
+   * GET Musicas/:id/edit
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -85,8 +87,8 @@ class EstiloController {
   }
 
   /**
-   * Update Estilo details.
-   * PUT or PATCH Estilos/:id
+   * Update Musica details.
+   * PUT or PATCH Musicas/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -94,30 +96,30 @@ class EstiloController {
    */
   async update ({ params, request, response }) {
 
-    const estilo = await Estilo.findOrFail(params.id); //Forma mais elegante
+    const musica = await Musica.findOrFail(params.id); //Forma mais elegante
 
-    const campos = Estilo.getCamposCadastro() // Exportar da Model. Assim vc não precisa modificar de um em um.
+    const campos = Musica.getCamposCadastro() // Exportar da Model. Assim vc não precisa modificar de um em um.
     const dados = request.only(campos)
 
-    estilo.merge(dados);
-    await estilo.save();
+    musica.merge(dados);
+    await musica.save();
 
-    return estilo;
+    return musica;
   }
 
   /**
-   * Delete a Estilo with id.
-   * DELETE Estilos/:id
+   * Delete a Musica with id.
+   * DELETE Musicas/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
-    const estilo = await Estilo.findOrFail(params.id);
+    const musica = await Musica.findOrFail(params.id);
 
-    return await estilo.delete()
+    return await musica.delete()
   }
 }
 
-module.exports = EstiloController
+module.exports = MusicaController
