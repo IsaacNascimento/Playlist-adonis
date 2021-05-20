@@ -20,22 +20,62 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
-Route.resource('/usuarios', 'UsuarioController').apiOnly();
+Route.resource('/usuarios', 'UsuarioController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'Usuario'], 
+     ]))
 
-Route.resource('/autores', 'AutorController').apiOnly();
+Route.resource('/autores', 'AutorController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'Autor'], 
+     ]))
 
-Route.resource('/estilos', 'EstiloController').apiOnly();
+Route.resource('/estilos', 'EstiloController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'Estilo'], 
+     ]))
 
-Route.resource('/musicas', 'MusicaController').apiOnly();
+Route.resource('/musicas', 'MusicaController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'Musica'], 
+     ]))
 
-Route.resource('/plataformas', 'PlataformaController').apiOnly();
+Route.resource('/plataformas', 'PlataformaController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'Plataforma'], 
+     ]))
 
-Route.resource('/playlists', 'PlaylistController').apiOnly();
+Route.resource('/playlists', 'PlaylistController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'Playlist'], 
+     ]))
 
-Route.resource('/playlistsmusicas', 'PlaylistMusicaController').apiOnly();
+Route.resource('/playlistsmusicas', 'PlaylistMusicaController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'PlaylistMusica'], 
+     ]))
 
-Route.resource('/autormusicas', 'AutorMusicaController').apiOnly();
+Route.resource('/autormusicas', 'AutorMusicaController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'AutorMusica'], 
+     ]))
 
-Route.resource('/despertadores', 'DespertadorController').apiOnly();
+Route.resource('/despertadores', 'DespertadorController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'Despertador'], 
+     ]))
 
-Route.resource('/datas', 'DataController').apiOnly();
+Route.resource('/datas', 'DataController')
+     .apiOnly()
+     .validator(new Map([
+       [['store', 'update'], 'Data'], 
+     ]))
