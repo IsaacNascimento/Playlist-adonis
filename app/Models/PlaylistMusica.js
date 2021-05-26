@@ -7,9 +7,8 @@ class PlaylistMusica extends Model {
 
     static getCamposCadastro(){
         return [
-        'nome', 
-        'usuario_id',
-        'plataforma_id'
+        'musica_id',
+        'playlist_id'
     ]
 }
 

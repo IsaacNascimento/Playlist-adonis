@@ -68,9 +68,9 @@ class MusicaController {
   async show ({ params, request, response, view }) {
     return await Musica.query()                 // Mesma coisa do FindOrFail, porém usando o "with".
                        .with('estilo')
-                       .with('autores')
+                       //.with('autores')
                        .with('playlist')
-                       .where(' id', params.id)
+                       .where('id', params.id)
                        .first();
   }
 

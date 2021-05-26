@@ -8,7 +8,7 @@ class Despertador extends ValidatorAbstract {
       // validation rules
       titulo: 'required|max:100|min:2',
       usuario_id: 'required|integer',
-      playlist_id: 'required|integer',
+      playlist_id: 'integer',
     }
   }
 }

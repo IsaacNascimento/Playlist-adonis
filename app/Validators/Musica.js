@@ -8,7 +8,7 @@ class Musica extends ValidatorAbstract {
       // validation rules
       nome: 'required|max:100|min:2',
       estilo_id: 'integer|required',
-      autor_id: 'integer|required'
+      //autor_id: 'integer|required'
     }
   }
 }

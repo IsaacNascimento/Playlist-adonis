@@ -9,7 +9,7 @@ class MusicaSchema extends Schema {
       table.increments()
       table.string('nome', 100).notNullable()
       table.integer('estilo_id').references('id').inTable('estilos').unsigned().notNullable()
-      table.integer('autor_id').references('id').inTable('autores').unsigned()
+      //table.integer('autor_id').references('id').inTable('autores').unsigned()
       table.timestamps()
     })
   }

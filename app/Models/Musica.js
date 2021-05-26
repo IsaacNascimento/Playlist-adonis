@@ -9,7 +9,8 @@ class Musica extends Model {
         return [
         'nome',
         'estilo_id',
-        'autor_id',
+        //'autor_id', // tirar isso
+        
     ]
 }
 
@@ -18,10 +19,10 @@ class Musica extends Model {
     return this.belongsTo('App/Models/Estilo')      
     }
 
-   autores(){ 
+   /*autores(){ 
 
     return this.belongsToMany('App/Models/Autor').pivotTable('autor_musicas')        
-    }
+    }*/
    playlist(){ 
 
     return this.belongsToMany('App/Models/Playlist').pivotTable('playlist_musicas')        

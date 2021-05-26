@@ -24,6 +24,7 @@ class DespertadorSeeder {
       {id: 4, titulo: 'Limpar a casa'  ,usuario_id: 2, playlist_id: 2},
       {id: 5, titulo: 'Correr'         ,usuario_id: 3, playlist_id: 3},
       {id: 6, titulo: 'Churrasco'      ,usuario_id: 4, playlist_id: 4},
+      {id: 7, titulo: 'Caminhar'       ,usuario_id: 4                },
     ])
   }
 }

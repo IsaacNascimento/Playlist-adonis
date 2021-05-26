@@ -18,6 +18,7 @@ class Playlist extends Model {
     return this.belongsToMany('App/Models/Musica').pivotTable('playlist_musicas')
               
     }
+    
    plataforma(){ 
 
     return this.belongsTo('App/Models/Plataforma')

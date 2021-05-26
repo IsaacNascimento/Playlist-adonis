@@ -20,62 +20,70 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
-Route.resource('/usuarios', 'UsuarioController')
-     .apiOnly()
-     .validator(new Map([
-       [['store', 'update'], 'Usuario'], 
-     ]))
+Route.post('/token', 'UserController.token')
+Route.resource('/users', 'UserController').apiOnly()
 
-Route.resource('/autores', 'AutorController')
-     .apiOnly()
-     .validator(new Map([
-       [['store', 'update'], 'Autor'], 
-     ]))
+Route.group(()=> {
 
-Route.resource('/estilos', 'EstiloController')
-     .apiOnly()
-     .validator(new Map([
+  Route.resource('/usuarios', 'UsuarioController')
+       .apiOnly()
+       .validator(new Map([
+         [['store', 'update'], 'Usuario'], 
+         ]))
+
+  Route.resource('/autores', 'AutorController')
+       .apiOnly()
+       .validator(new Map([
+        [['store', 'update'], 'Autor'], 
+        ]))
+
+  Route.resource('/estilos', 'EstiloController')
+       .apiOnly()
+       .validator(new Map([
        [['store', 'update'], 'Estilo'], 
-     ]))
+       ]))
 
-Route.resource('/musicas', 'MusicaController')
-     .apiOnly()
-     .validator(new Map([
+  Route.resource('/musicas', 'MusicaController')
+       .apiOnly()
+       .validator(new Map([
        [['store', 'update'], 'Musica'], 
-     ]))
+       ]))
 
-Route.resource('/plataformas', 'PlataformaController')
-     .apiOnly()
-     .validator(new Map([
+  Route.resource('/plataformas', 'PlataformaController')
+       .apiOnly()
+       .validator(new Map([
        [['store', 'update'], 'Plataforma'], 
-     ]))
+       ]))
 
-Route.resource('/playlists', 'PlaylistController')
-     .apiOnly()
-     .validator(new Map([
+  Route.resource('/playlists', 'PlaylistController')
+       .apiOnly()
+       .validator(new Map([
        [['store', 'update'], 'Playlist'], 
-     ]))
+       ]))
 
-Route.resource('/playlistsmusicas', 'PlaylistMusicaController')
-     .apiOnly()
-     .validator(new Map([
+  Route.resource('/playlistsmusicas', 'PlaylistMusicaController')
+       .apiOnly()
+       .validator(new Map([
        [['store', 'update'], 'PlaylistMusica'], 
-     ]))
+       ]))
 
-Route.resource('/autormusicas', 'AutorMusicaController')
-     .apiOnly()
-     .validator(new Map([
+  Route.resource('/autormusicas', 'AutorMusicaController')
+       .apiOnly()
+       .validator(new Map([
        [['store', 'update'], 'AutorMusica'], 
-     ]))
+       ]))
 
-Route.resource('/despertadores', 'DespertadorController')
-     .apiOnly()
-     .validator(new Map([
+  Route.resource('/despertadores', 'DespertadorController')
+       .apiOnly()
+       .validator(new Map([
        [['store', 'update'], 'Despertador'], 
-     ]))
+       ]))
 
-Route.resource('/datas', 'DataController')
-     .apiOnly()
-     .validator(new Map([
+  Route.resource('/datas', 'DataController')
+       .apiOnly()
+       .validator(new Map([
        [['store', 'update'], 'Data'], 
-     ]))
+       ]))
+
+}).middleware('auth')
+
