@@ -21,7 +21,11 @@ Route.get('/', () => {
 })
 
 Route.post('/token', 'UserController.token')
-Route.resource('/users', 'UserController').apiOnly()
+Route.resource('/users', 'UserController')
+     .apiOnly()
+     .validator(new Map([
+          [['store', 'update'], 'User'], 
+          ]))
 
 Route.group(()=> {
 
@@ -85,5 +89,5 @@ Route.group(()=> {
        [['store', 'update'], 'Data'], 
        ]))
 
-}).middleware('auth')
+})//.middleware('auth')
 

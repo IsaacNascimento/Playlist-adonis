@@ -18,6 +18,21 @@ class AutorController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
+
+  /**
+  * @swagger
+  * /autores:
+  *   get:
+  *     tags:
+  *       - Autor
+  *     summary: Listagem completa de Autores
+  *     
+  *     responses:
+  *       200:
+  *         description: Lista paginada de Autores
+  *       
+  */
+
   async index ({ request, response, view }) {
     let {page, perPage} = request.all();
      
@@ -35,7 +50,8 @@ class AutorController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create ({ request, response, view }) {
+  
+  /*async create ({ request, response, view }) {
   }
 
   /**
@@ -46,6 +62,28 @@ class AutorController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
+
+
+   /**
+  * @swagger
+  * /autores:
+  *   post:
+  *     tags:
+  *       - Autor
+  *     summary: Criação de um novo Autor
+  *     parameters: 
+  *         - name: autor
+  *           description: Objeto de Autor
+  *           in: body
+  *           required: true
+  *           type: object
+  *           schema:
+  *             $ref: '#/definitions/Autor'
+  *     responses:
+  *       200:
+  *         description: Autores Criados
+  *       
+  */
   async store ({ request, response }) {
     //const Autor = request.only(['nome', 'cpf', 'data_nascimento', 'matricula', 'email', 'telefone', 'cep', 'logradouro', 'complemento', 'bairro', 'uf', 'municipio'])
     //return await Autor.create(Autor)

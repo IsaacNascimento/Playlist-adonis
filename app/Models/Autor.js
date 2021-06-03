@@ -3,6 +3,21 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
+
+/** 
+*  @swagger
+*  definitions:
+*    Autor:
+*      type: object
+*      properties:
+*        nome:
+*          type: string
+*          maxLength: 50
+*        required:
+*         - nome
+*/
+
+
 class Autor extends Model {
 
     static get table(){
